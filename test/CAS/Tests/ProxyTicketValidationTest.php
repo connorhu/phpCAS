@@ -80,7 +80,9 @@ class CAS_Tests_ProxyTicketValidationTest extends PHPUnit_Framework_TestCase
          *********************************************************/
         // Valid ticket response
         $response = new CAS_TestHarness_BasicResponse(
-            'https', 'cas.example.edu', '/cas/proxyValidate'
+            'https',
+            'cas.example.edu',
+            '/cas/proxyValidate'
         );
         $response->matchQueryParameters(
             array('service' => 'http://www.service.com/',
@@ -114,7 +116,9 @@ class CAS_Tests_ProxyTicketValidationTest extends PHPUnit_Framework_TestCase
 
         // Invalid ticket response
         $response = new CAS_TestHarness_BasicResponse(
-            'https', 'cas.example.edu', '/cas/proxyValidate'
+            'https',
+            'cas.example.edu',
+            '/cas/proxyValidate'
         );
         $response->matchQueryParameters(
             array('service' => 'http://www.service.com/',)
@@ -175,7 +179,8 @@ class CAS_Tests_ProxyTicketValidationTest extends PHPUnit_Framework_TestCase
         </cas:proxies>
     </cas:authenticationSuccess>
 </cas:serviceResponse>
-", $text_response
+",
+            $text_response
         );
         $this->assertInstanceOf('DOMElement', $tree_response);
     }
@@ -246,7 +251,8 @@ class CAS_Tests_ProxyTicketValidationTest extends PHPUnit_Framework_TestCase
         }
         ob_end_clean();
         $this->assertEquals(
-            array(), $this->object->getProxies(),
+            array(),
+            $this->object->getProxies(),
             "The list of proxies in front of the client."
         );
     }
@@ -432,7 +438,9 @@ class CAS_Tests_ProxyTicketValidationTest extends PHPUnit_Framework_TestCase
             )
         );
         $result = $this->object->validateCAS20(
-            $url, $text_response, $tree_response
+            $url,
+            $text_response,
+            $tree_response
         );
         $this->assertFalse($result);
     }
@@ -456,9 +464,10 @@ class CAS_Tests_ProxyTicketValidationTest extends PHPUnit_Framework_TestCase
             )
         );
         $result = $this->object->validateCAS20(
-            $url, $text_response, $tree_response
+            $url,
+            $text_response,
+            $tree_response
         );
         $this->assertFalse($result);
     }
 }
-?>

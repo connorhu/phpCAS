@@ -63,7 +63,6 @@ class TestSuite extends PHPUnit_Framework_TestSuite
     */
     protected function setUp()
     {
-
     }
 
     /**
@@ -73,7 +72,6 @@ class TestSuite extends PHPUnit_Framework_TestSuite
      */
     protected function tearDown()
     {
-
     }
 
     /**
@@ -87,12 +85,13 @@ class TestSuite extends PHPUnit_Framework_TestSuite
      * @access protected
      */
     protected static function recursiveAddTests(
-        PHPUnit_Framework_TestSuite $suite, $dir
+        PHPUnit_Framework_TestSuite $suite,
+        $dir
     ) {
         foreach (scandir($dir) as $file) {
             if (preg_match('/Test\.php$/', $file)) {
                 $suite->addTestFile($dir . '/' . $file);
-            } else if (is_dir($dir . '/' . $file)
+            } elseif (is_dir($dir . '/' . $file)
                 && preg_match('/^[a-z0-9]+/i', $file)
             ) {
                 self::recursiveAddTests($suite, $dir . '/' . $file);

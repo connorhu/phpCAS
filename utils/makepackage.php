@@ -72,4 +72,3 @@ $pfm->addExtensionDep('required', 'pdo');
 
 $pfm->generateContents();
 $pfm->writePackageFile();
-

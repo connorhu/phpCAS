@@ -310,7 +310,8 @@ class CAS_TestHarness_BasicResponse implements CAS_TestHarness_ResponseInterface
         }
         if (!preg_match(
             '/HTTP\/[0-9.]+\s+([0-9]+)\s*(.*)/',
-            $this->responseHeaders[0], $matches
+            $this->responseHeaders[0],
+            $matches
         )
         ) {
             throw new CAS_Request_Exception(
@@ -407,7 +408,7 @@ class CAS_TestHarness_BasicResponse implements CAS_TestHarness_ResponseInterface
     {
         if ($this->verifyIsPost === true && !$isPost) {
             return false;
-        } else if ($this->verifyIsPost === false && $isPost) {
+        } elseif ($this->verifyIsPost === false && $isPost) {
             return false;
         }
         return true;
@@ -463,5 +464,4 @@ class CAS_TestHarness_BasicResponse implements CAS_TestHarness_ResponseInterface
         }
         return true;
     }
-
 }

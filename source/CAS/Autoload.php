@@ -70,7 +70,7 @@ function CAS_autoload($class)
     ) {
         return false;
     }
-    die ((string) $e);
+    die((string) $e);
 }
 
 // set up __autoload
@@ -86,5 +86,3 @@ if (!(spl_autoload_functions())
         spl_autoload_register('__autoload');
     }
 }
-
-?>

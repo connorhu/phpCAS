@@ -98,7 +98,9 @@ class CAS_Tests_ServiceWebTest extends PHPUnit_Framework_TestCase
 
         // Proxy ticket Response
         $response = new CAS_TestHarness_BasicResponse(
-            'https', 'cas.example.edu', '/cas/proxy'
+            'https',
+            'cas.example.edu',
+            '/cas/proxy'
         );
         $response->matchQueryParameters(
             array(
@@ -130,7 +132,9 @@ class CAS_Tests_ServiceWebTest extends PHPUnit_Framework_TestCase
 
         // Valid Service Response
         $response = new CAS_TestHarness_BasicResponse(
-            'http', 'www.service.com', '/my_webservice'
+            'http',
+            'www.service.com',
+            '/my_webservice'
         );
         $response->matchQueryParameters(
             array('ticket' => 'PT-asdfas-dfasgww2323radf3',)
@@ -155,7 +159,9 @@ class CAS_Tests_ServiceWebTest extends PHPUnit_Framework_TestCase
 
         // Error Proxy ticket Response
         $response = new CAS_TestHarness_BasicResponse(
-            'https', 'cas.example.edu', '/cas/proxy'
+            'https',
+            'cas.example.edu',
+            '/cas/proxy'
         );
         $response->matchQueryParameters(
             array(
@@ -192,7 +198,9 @@ class CAS_Tests_ServiceWebTest extends PHPUnit_Framework_TestCase
 
         // Proxy ticket Response
         $response = new CAS_TestHarness_BasicResponse(
-            'https', 'cas.example.edu', '/cas/proxy'
+            'https',
+            'cas.example.edu',
+            '/cas/proxy'
         );
         $response->matchQueryParameters(
             array('targetService' => 'ssh://me.example.net',
@@ -227,7 +235,9 @@ class CAS_Tests_ServiceWebTest extends PHPUnit_Framework_TestCase
 
         // Proxy ticket Response
         $response = new CAS_TestHarness_BasicResponse(
-            'https', 'cas.example.edu', '/cas/proxy'
+            'https',
+            'cas.example.edu',
+            '/cas/proxy'
         );
         $response->matchQueryParameters(
             array(
@@ -259,7 +269,9 @@ class CAS_Tests_ServiceWebTest extends PHPUnit_Framework_TestCase
 
         // Service Error Response
         $response = new CAS_TestHarness_BasicResponse(
-            'http', 'www.service.com', '/my_webservice_that_has_problems'
+            'http',
+            'www.service.com',
+            '/my_webservice_that_has_problems'
         );
         $response->matchQueryParameters(
             array('ticket' => 'PT-12345-abscasdfasdf',)
@@ -285,7 +297,9 @@ class CAS_Tests_ServiceWebTest extends PHPUnit_Framework_TestCase
 
         // Proxy ticket Response
         $response = new CAS_TestHarness_BasicResponse(
-            'https', 'cas.example.edu', '/cas/proxy'
+            'https',
+            'cas.example.edu',
+            '/cas/proxy'
         );
         $response->matchQueryParameters(
             array(
@@ -317,7 +331,9 @@ class CAS_Tests_ServiceWebTest extends PHPUnit_Framework_TestCase
 
         // Valid Service Response
         $response = new CAS_TestHarness_BasicResponse(
-            'http', 'www.service.com', '/post_webservice'
+            'http',
+            'www.service.com',
+            '/post_webservice'
         );
         $response->matchQueryParameters(
             array('ticket' => 'PT-posting-dfasgww2323radf3',)
@@ -347,7 +363,6 @@ class CAS_Tests_ServiceWebTest extends PHPUnit_Framework_TestCase
             "<result><string>Yay, it worked.</string></result>"
         );
         CAS_TestHarness_DummyRequest::addResponse($response);
-
     }
 
     /**
@@ -369,7 +384,9 @@ class CAS_Tests_ServiceWebTest extends PHPUnit_Framework_TestCase
     public function testRetrievePT()
     {
         $pt = $this->object->retrievePT(
-            'http://www.service.com/my_webservice', $err_code, $err_msg
+            'http://www.service.com/my_webservice',
+            $err_code,
+            $err_msg
         );
         $this->assertEquals('PT-asdfas-dfasgww2323radf3', $pt);
     }
@@ -382,7 +399,9 @@ class CAS_Tests_ServiceWebTest extends PHPUnit_Framework_TestCase
     public function testServiceWeb()
     {
         $result = $this->object->serviceWeb(
-            'http://www.service.com/my_webservice', $err_code, $output
+            'http://www.service.com/my_webservice',
+            $err_code,
+            $output
         );
         $this->assertTrue($result, $output);
         $this->assertEquals(PHPCAS_SERVICE_OK, $err_code);
@@ -398,7 +417,9 @@ class CAS_Tests_ServiceWebTest extends PHPUnit_Framework_TestCase
     public function testServiceWebPtError()
     {
         $result = $this->object->serviceWeb(
-            'http://www.service.com/my_other_webservice', $err_code, $output
+            'http://www.service.com/my_other_webservice',
+            $err_code,
+            $output
         );
         $this->assertFalse(
             $result,
@@ -417,7 +438,9 @@ class CAS_Tests_ServiceWebTest extends PHPUnit_Framework_TestCase
     public function testServiceWebServiceError()
     {
         $result = $this->object->serviceWeb(
-            'ssh://me.example.net', $err_code, $output
+            'ssh://me.example.net',
+            $err_code,
+            $output
         );
         $this->assertFalse(
             $result,
@@ -440,7 +463,8 @@ class CAS_Tests_ServiceWebTest extends PHPUnit_Framework_TestCase
         $service->send();
         $this->assertEquals(200, $service->getResponseStatusCode());
         $this->assertEquals(
-            "Hello from the service.", $service->getResponseBody()
+            "Hello from the service.",
+            $service->getResponseBody()
         );
     }
 
@@ -492,7 +516,8 @@ class CAS_Tests_ServiceWebTest extends PHPUnit_Framework_TestCase
         $service->send();
         $this->assertEquals(500, $service->getResponseStatusCode());
         $this->assertEquals(
-            "Problems have Occurred.", $service->getResponseBody()
+            "Problems have Occurred.",
+            $service->getResponseBody()
         );
     }
 
@@ -518,4 +543,3 @@ class CAS_Tests_ServiceWebTest extends PHPUnit_Framework_TestCase
         );
     }
 }
-?>

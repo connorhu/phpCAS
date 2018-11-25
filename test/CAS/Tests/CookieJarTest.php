@@ -105,13 +105,16 @@ class CAS_Tests_CookieJarTest extends PHPUnit_Framework_TestCase
 
         // Verify that there are no cookies to start.
         $this->assertEquals(
-            0, count($this->object->getCookies($this->serviceUrl_1))
+            0,
+            count($this->object->getCookies($this->serviceUrl_1))
         );
         $this->assertEquals(
-            0, count($this->object->getCookies($this->serviceUrl_1b))
+            0,
+            count($this->object->getCookies($this->serviceUrl_1b))
         );
         $this->assertEquals(
-            0, count($this->object->getCookies($this->serviceUrl_1c))
+            0,
+            count($this->object->getCookies($this->serviceUrl_1c))
         );
 
         // Add service cookies as if we just made are request to serviceUrl_1
@@ -128,7 +131,6 @@ class CAS_Tests_CookieJarTest extends PHPUnit_Framework_TestCase
      */
     protected function tearDown()
     {
-
     }
 
     /*********************************************************
@@ -273,16 +275,21 @@ class CAS_Tests_CookieJarTest extends PHPUnit_Framework_TestCase
         // Ensure the SID cookie is available to the domain
         $cookies = $this->object->getCookies('http://example.org/path/');
         $this->assertArrayHasKey(
-            'SID', $cookies, "example.org should match .example.org cookies"
+            'SID',
+            $cookies,
+            "example.org should match .example.org cookies"
         );
 
         // Ensure the SID cookie is available to the host
         $cookies = $this->object->getCookies('http://host.example.org/path/');
         $this->assertArrayHasKey(
-            'SID', $cookies, "host.example.org should match .example.org cookies"
+            'SID',
+            $cookies,
+            "host.example.org should match .example.org cookies"
         );
         $this->assertEquals(
-            'thisisthesid', $cookies['SID'],
+            'thisisthesid',
+            $cookies['SID'],
             "host.example.org should match .example.org cookies"
         );
 
@@ -292,7 +299,8 @@ class CAS_Tests_CookieJarTest extends PHPUnit_Framework_TestCase
         $cookies = $this->object
             ->getCookies('http://sub.host.example.org/path/');
         $this->assertArrayNotHasKey(
-            'SID', $cookies,
+            'SID',
+            $cookies,
             "sub.host.example.org shouldn't match .example.org cookies"
         );
     }
@@ -313,18 +321,21 @@ class CAS_Tests_CookieJarTest extends PHPUnit_Framework_TestCase
         // Ensure the SID cookie is NOT available to the domain
         $cookies = $this->object->getCookies('http://example.org/path/');
         $this->assertArrayNotHasKey(
-            'SID', $cookies,
+            'SID',
+            $cookies,
             "example.org shouldn't match host.example.org cookies"
         );
 
         // Ensure the SID cookie is available to the host
         $cookies = $this->object->getCookies('http://host.example.org/path/');
         $this->assertArrayHasKey(
-            'SID', $cookies,
+            'SID',
+            $cookies,
             "host.example.org should match host.example.org cookies"
         );
         $this->assertEquals(
-            'thisisthesid', $cookies['SID'],
+            'thisisthesid',
+            $cookies['SID'],
             "host.example.org should match host.example.org cookies"
         );
 
@@ -334,7 +345,8 @@ class CAS_Tests_CookieJarTest extends PHPUnit_Framework_TestCase
         $cookies = $this->object
             ->getCookies('http://sub.host.example.org/path/');
         $this->assertArrayNotHasKey(
-            'SID', $cookies,
+            'SID',
+            $cookies,
             "sub.host.example.org shouldn't match host.example.org cookies"
         );
     }
@@ -355,18 +367,21 @@ class CAS_Tests_CookieJarTest extends PHPUnit_Framework_TestCase
         // Ensure the SID cookie is NOT available to the domain
         $cookies = $this->object->getCookies('http://example.org/path/');
         $this->assertArrayNotHasKey(
-            'SID', $cookies,
+            'SID',
+            $cookies,
             "example.org shouldn't match .host.example.org cookies"
         );
 
         // Ensure the SID cookie is available to the host
         $cookies = $this->object->getCookies('http://host.example.org/path/');
         $this->assertArrayHasKey(
-            'SID', $cookies,
+            'SID',
+            $cookies,
             "host.example.org should match .host.example.org cookies"
         );
         $this->assertEquals(
-            'thisisthesid', $cookies['SID'],
+            'thisisthesid',
+            $cookies['SID'],
             "host.example.org should match host.example.org cookies"
         );
 
@@ -374,7 +389,8 @@ class CAS_Tests_CookieJarTest extends PHPUnit_Framework_TestCase
         $cookies = $this->object
             ->getCookies('http://sub.host.example.org/path/');
         $this->assertArrayHasKey(
-            'SID', $cookies,
+            'SID',
+            $cookies,
             "sub.host.example.org should match .host.example.org cookies"
         );
     }
@@ -403,7 +419,8 @@ class CAS_Tests_CookieJarTest extends PHPUnit_Framework_TestCase
     {
         // Verify that we have on cookie to start.
         $this->assertEquals(
-            1, count($this->object->getCookies($this->serviceUrl_1))
+            1,
+            count($this->object->getCookies($this->serviceUrl_1))
         );
 
         // Send set-cookie header to remove the cookie
@@ -433,7 +450,8 @@ class CAS_Tests_CookieJarTest extends PHPUnit_Framework_TestCase
     {
         // Verify that we have on cookie to start.
         $this->assertEquals(
-            1, count($this->object->getCookies($this->serviceUrl_1))
+            1,
+            count($this->object->getCookies($this->serviceUrl_1))
         );
 
         // Send set-cookie header to remove the cookie
@@ -443,7 +461,8 @@ class CAS_Tests_CookieJarTest extends PHPUnit_Framework_TestCase
         $this->object->storeCookies($this->serviceUrl_1, $headers);
 
         $this->assertEquals(
-            0, count($this->object->getCookies($this->serviceUrl_1))
+            0,
+            count($this->object->getCookies($this->serviceUrl_1))
         );
     }
 
@@ -458,7 +477,8 @@ class CAS_Tests_CookieJarTest extends PHPUnit_Framework_TestCase
     {
         // Verify that we have on cookie to start.
         $this->assertEquals(
-            1, count($this->object->getCookies($this->serviceUrl_1))
+            1,
+            count($this->object->getCookies($this->serviceUrl_1))
         );
 
         // Send set-cookie header to remove the cookie
@@ -468,7 +488,8 @@ class CAS_Tests_CookieJarTest extends PHPUnit_Framework_TestCase
         $this->object->storeCookies($this->serviceUrl_1, $headers);
 
         $this->assertEquals(
-            0, count($this->object->getCookies($this->serviceUrl_1))
+            0,
+            count($this->object->getCookies($this->serviceUrl_1))
         );
     }
 
@@ -483,7 +504,8 @@ class CAS_Tests_CookieJarTest extends PHPUnit_Framework_TestCase
     {
         // Verify that we have on cookie to start.
         $this->assertEquals(
-            1, count($this->object->getCookies($this->serviceUrl_1))
+            1,
+            count($this->object->getCookies($this->serviceUrl_1))
         );
 
         // Send set-cookie header to remove the cookie
@@ -509,7 +531,8 @@ class CAS_Tests_CookieJarTest extends PHPUnit_Framework_TestCase
     {
         // Verify that we have on cookie to start.
         $this->assertEquals(
-            1, count($this->object->getCookies($this->serviceUrl_1))
+            1,
+            count($this->object->getCookies($this->serviceUrl_1))
         );
 
         // Send set-cookie header to remove the cookie
@@ -541,7 +564,8 @@ class CAS_Tests_CookieJarTest extends PHPUnit_Framework_TestCase
         $this->assertInternalType('array', $cookies);
         $this->assertEquals('hello world', $cookies['SID']);
         $this->assertEquals(
-            1, count($cookies),
+            1,
+            count($cookies),
             "Should only a single SID cookie, not a cookie for the HttpOnly attribute"
         );
     }
@@ -563,7 +587,8 @@ class CAS_Tests_CookieJarTest extends PHPUnit_Framework_TestCase
         $this->assertInternalType('array', $cookies);
         $this->assertEquals('hello world', $cookies['SID']);
         $this->assertEquals(
-            1, count($cookies),
+            1,
+            count($cookies),
             "Should only a single SID cookie, not a cookie for the comment attribute"
         );
     }
@@ -610,7 +635,8 @@ class CAS_Tests_CookieJarTest extends PHPUnit_Framework_TestCase
 
         $this->assertInternalType('array', $cookies);
         $this->assertEquals(
-            'hello=world', $cookies['SID'],
+            'hello=world',
+            $cookies['SID'],
             "\tNote: The implementation as of Sept 15, 2010 makes the assumption \n\tthat equals symbols will not be present in quoted attribute values. \n\tWhile attribute values that contain equals symbols are allowed by \n\tRFC2965, they are hopefully rare enough to ignore for our purposes."
         );
         $this->assertEquals(1, count($cookies));
@@ -651,7 +677,8 @@ class CAS_Tests_CookieJarTest extends PHPUnit_Framework_TestCase
     public function testProtectedParseCookieHeaders()
     {
         $cookies = $this->object->parseCookieHeaders(
-            $this->responseHeaders_1, 'service.example.com'
+            $this->responseHeaders_1,
+            'service.example.com'
         );
 
         $this->assertInternalType('array', $cookies);
@@ -914,6 +941,4 @@ class CAS_Tests_CookieJarTest extends PHPUnit_Framework_TestCase
             )
         );
     }
-
 }
-?>

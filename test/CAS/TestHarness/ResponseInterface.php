@@ -132,5 +132,4 @@ interface CAS_TestHarness_ResponseInterface
      * @return bool TRUE if the cert path is correct.
      */
     public function validateCaCert($caCertPath);
-
 }

@@ -45,9 +45,7 @@
  * @link     https://wiki.jasig.org/display/CASC/phpCAS
  */
 
-class CAS_AuthenticationException
-extends RuntimeException
-implements CAS_Exception
+class CAS_AuthenticationException extends RuntimeException implements CAS_Exception
 {
 
     /**
@@ -65,8 +63,15 @@ implements CAS_Exception
      * @param int        $err_code     the error code given by the CAS server
      * @param string     $err_msg      the error message given by the CAS server
      */
-    public function __construct($client,$failure,$cas_url,$no_response,
-        $bad_response='',$cas_response='',$err_code='',$err_msg=''
+    public function __construct(
+        $client,
+        $failure,
+        $cas_url,
+        $no_response,
+        $bad_response='',
+        $cas_response='',
+        $err_code='',
+        $err_msg=''
     ) {
         $messages = array();
         phpCAS::traceBegin();
@@ -79,10 +84,10 @@ implements CAS_Exception
         );
         phpCAS::trace($messages[] = 'CAS URL: '.$cas_url);
         phpCAS::trace($messages[] = 'Authentication failure: '.$failure);
-        if ( $no_response ) {
+        if ($no_response) {
             phpCAS::trace($messages[] = 'Reason: no response from the CAS server');
         } else {
-            if ( $bad_response ) {
+            if ($bad_response) {
                 phpCAS::trace($messages[] = 'Reason: bad response from the CAS server');
             } else {
                 switch ($client->getServerVersion()) {
@@ -91,7 +96,7 @@ implements CAS_Exception
                     break;
                 case CAS_VERSION_2_0:
                 case CAS_VERSION_3_0:
-                    if ( empty($err_code) ) {
+                    if (empty($err_code)) {
                         phpCAS::trace($messages[] = 'Reason: no CAS error');
                     } else {
                         phpCAS::trace($messages[] = 'Reason: ['.$err_code.'] CAS error: '.$err_msg);
@@ -106,6 +111,4 @@ implements CAS_Exception
 
         parent::__construct(implode("\n", $messages));
     }
-
 }
-?>

@@ -57,7 +57,9 @@ class CAS_Tests_MultiRequestTest extends PHPUnit_Framework_TestCase
          * Enumerate our responses
          *********************************************************/
         $response = new CAS_TestHarness_BasicResponse(
-            'http', 'www.jasig.org', '/some/path'
+            'http',
+            'www.jasig.org',
+            '/some/path'
         );
         $response->ensureIsGet();
         $response->setResponseHeaders(
@@ -74,7 +76,9 @@ class CAS_Tests_MultiRequestTest extends PHPUnit_Framework_TestCase
         CAS_TestHarness_DummyRequest::addResponse($response);
 
         $response = new CAS_TestHarness_BasicResponse(
-            'http', 'www.example.org', '/some/other/path'
+            'http',
+            'www.example.org',
+            '/some/other/path'
         );
         $response->ensureIsGet();
         $response->setResponseHeaders(
@@ -91,7 +95,9 @@ class CAS_Tests_MultiRequestTest extends PHPUnit_Framework_TestCase
         CAS_TestHarness_DummyRequest::addResponse($response);
 
         $response = new CAS_TestHarness_BasicResponse(
-            'http', 'www.educause.edu', '/path'
+            'http',
+            'www.educause.edu',
+            '/path'
         );
         $response->ensureIsGet();
         $response->setResponseHeaders(
@@ -106,7 +112,6 @@ class CAS_Tests_MultiRequestTest extends PHPUnit_Framework_TestCase
         );
         $response->setResponseBody("I am Educause");
         CAS_TestHarness_DummyRequest::addResponse($response);
-
     }
 
     /**
@@ -161,4 +166,3 @@ class CAS_Tests_MultiRequestTest extends PHPUnit_Framework_TestCase
         $this->assertEquals("I am Educause", $request3->getResponseBody());
     }
 }
-?>

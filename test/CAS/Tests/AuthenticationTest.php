@@ -84,7 +84,9 @@ class CAS_Tests_AuthenticationTest extends PHPUnit_Framework_TestCase
 
         // Set up our response.
         $response = new CAS_TestHarness_BasicResponse(
-            'https', 'cas.example.edu', '/cas/serviceValidate'
+            'https',
+            'cas.example.edu',
+            '/cas/serviceValidate'
         );
         $response->setResponseHeaders(
             array('HTTP/1.1 200 OK', 'Date: Wed, 29 Sep 2010 19:20:57 GMT',
@@ -106,7 +108,6 @@ class CAS_Tests_AuthenticationTest extends PHPUnit_Framework_TestCase
 "
             );
         CAS_TestHarness_DummyRequest::addResponse($response);
-
     }
 
     /**
@@ -132,7 +133,8 @@ class CAS_Tests_AuthenticationTest extends PHPUnit_Framework_TestCase
             ob_start();
             $this->object->forceAuthentication();
             $this->assertTrue(
-                false, 'Should have thrown a CAS_GracefullTerminationException.'
+                false,
+                'Should have thrown a CAS_GracefullTerminationException.'
             );
         } catch (CAS_GracefullTerminationException $e) {
             ob_end_clean();

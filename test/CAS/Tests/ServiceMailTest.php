@@ -99,7 +99,9 @@ class CAS_Tests_ServiceMailTest extends PHPUnit_Framework_TestCase
 
         // Proxy ticket Response
         $response = new CAS_TestHarness_BasicResponse(
-            'https', 'cas.example.edu', '/cas/proxy'
+            'https',
+            'cas.example.edu',
+            '/cas/proxy'
         );
         $response->matchQueryParameters(
             array(
@@ -135,7 +137,9 @@ class CAS_Tests_ServiceMailTest extends PHPUnit_Framework_TestCase
 
         // Error Proxy ticket Response
         $response = new CAS_TestHarness_BasicResponse(
-            'https', 'cas.example.edu', '/cas/proxy'
+            'https',
+            'cas.example.edu',
+            '/cas/proxy'
         );
         $response->matchQueryParameters(
             array(
@@ -179,7 +183,6 @@ class CAS_Tests_ServiceMailTest extends PHPUnit_Framework_TestCase
             // For now, just ensure that it is an integer.
             define('OP_READONLY', 1);
         }
-
     }
 
     /**
@@ -201,7 +204,9 @@ class CAS_Tests_ServiceMailTest extends PHPUnit_Framework_TestCase
     public function testRetrievePT()
     {
         $pt = $this->object->retrievePT(
-            'imap://mail.example.edu/path/to/something', $err_code, $err_msg
+            'imap://mail.example.edu/path/to/something',
+            $err_code,
+            $err_msg
         );
         $this->assertEquals('PT-asdfas-dfasgww2323radf3', $pt);
     }
@@ -236,11 +241,16 @@ class CAS_Tests_ServiceMailTest extends PHPUnit_Framework_TestCase
     public function testServiceMailPtError()
     {
         $stream = $this->object->serviceMail(
-            'mailbox_name', 'imap://mail.example.edu/path/that/doesnt/exist',
-            OP_READONLY, $err_code, $err_msg, $pt
+            'mailbox_name',
+            'imap://mail.example.edu/path/that/doesnt/exist',
+            OP_READONLY,
+            $err_code,
+            $err_msg,
+            $pt
         );
         $this->assertFalse(
-            $stream, "serviceMail() should have returned false on a PT error."
+            $stream,
+            "serviceMail() should have returned false on a PT error."
         );
         $this->assertEquals(PHPCAS_SERVICE_PT_FAILURE, $err_code);
         $this->assertStringStartsWith("PT retrieving failed", $err_msg);
@@ -293,7 +303,6 @@ class CAS_Tests_ServiceMailTest extends PHPUnit_Framework_TestCase
         //     	$this->assertEquals(
         //          'PT-asdfas-dfasgww2323radf3', $service->getImapProxyTicket()
         //      );
-
     }
 
     /**
@@ -337,4 +346,3 @@ class CAS_Tests_ServiceMailTest extends PHPUnit_Framework_TestCase
         //     	$stream = $service->open();
     }
 }
-?>

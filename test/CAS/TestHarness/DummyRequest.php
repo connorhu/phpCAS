@@ -37,8 +37,7 @@
  * @license  http://www.apache.org/licenses/LICENSE-2.0  Apache License 2.0
  * @link     https://wiki.jasig.org/display/CASC/phpCAS
  */
-class CAS_TestHarness_DummyRequest extends CAS_Request_AbstractRequest
-implements CAS_Request_RequestInterface
+class CAS_TestHarness_DummyRequest extends CAS_Request_AbstractRequest implements CAS_Request_RequestInterface
 {
     private static $_responses = array();
 

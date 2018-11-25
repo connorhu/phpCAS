@@ -38,9 +38,7 @@
  * @license  http://www.apache.org/licenses/LICENSE-2.0  Apache License 2.0
  * @link     https://wiki.jasig.org/display/CASC/phpCAS
  */
-class CAS_ProxyTicketException
-extends BadMethodCallException
-implements CAS_Exception
+class CAS_ProxyTicketException extends BadMethodCallException implements CAS_Exception
 {
 
     /**
@@ -51,7 +49,7 @@ implements CAS_Exception
      *
      * @return void
      */
-    public function __construct ($message, $code = PHPCAS_SERVICE_PT_FAILURE)
+    public function __construct($message, $code = PHPCAS_SERVICE_PT_FAILURE)
     {
         // Warn if the code is not in our allowed list
         $ptCodes = array(

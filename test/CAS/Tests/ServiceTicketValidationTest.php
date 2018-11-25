@@ -80,7 +80,9 @@ class CAS_Tests_ServiceTicketValidationTest extends PHPUnit_Framework_TestCase
          *********************************************************/
         // Valid ticket response
         $response = new CAS_TestHarness_BasicResponse(
-            'https', 'cas.example.edu', '/cas/serviceValidate'
+            'https',
+            'cas.example.edu',
+            '/cas/serviceValidate'
         );
         $response->matchQueryParameters(
             array('service' => 'http://www.service.com/',
@@ -111,7 +113,9 @@ class CAS_Tests_ServiceTicketValidationTest extends PHPUnit_Framework_TestCase
 
         // Invalid ticket response
         $response = new CAS_TestHarness_BasicResponse(
-        	'https', 'cas.example.edu', '/cas/serviceValidate'
+            'https',
+            'cas.example.edu',
+            '/cas/serviceValidate'
         );
         $response->matchQueryParameters(
             array('service' => 'http://www.service.com/',)
@@ -200,6 +204,4 @@ class CAS_Tests_ServiceTicketValidationTest extends PHPUnit_Framework_TestCase
         );
         $this->assertInstanceOf('DOMElement', $tree_response);
     }
-
 }
-?>
